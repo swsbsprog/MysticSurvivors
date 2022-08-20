@@ -9,7 +9,8 @@ public class FlipByKey : MonoBehaviour
     SpriteRenderer spriteRenderer;
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     void Update()
     {
