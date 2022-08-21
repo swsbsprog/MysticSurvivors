@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     }
 
     public float dieAnimationTime = 1f;
+
+    public List<DropItem> dropItems;
     private IEnumerator Die()
     {
         GetComponent<MoveToPlayer>().enabled = false;   
@@ -30,5 +32,11 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Die");
         yield return new WaitForSeconds(dieAnimationTime);
         Destroy(gameObject);
+
+        dropItems.ForEach(x =>
+        {
+            var dropItem = Instantiate(x);
+            dropItem.transform.position = transform.position;
+        });
     }
 }
