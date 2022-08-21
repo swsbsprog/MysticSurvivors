@@ -8,9 +8,11 @@ public class Enemy : MonoBehaviour
 {
     public int hp = 2;
     Animator animator;
+    SpriteRenderer sr;
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
 
     internal void SetDamage(int power)
@@ -20,7 +22,16 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
             StartCoroutine(Die());
         else
-            animator.SetTrigger("Attacked");
+            StartCoroutine(AttackedCo());
+    }
+
+    public float blinkTime = 0.1f;
+    private IEnumerator AttackedCo()
+    {
+        animator.SetTrigger("Attacked");
+        sr.color = Color.red;
+        yield return new WaitForSeconds(blinkTime);
+        sr.color = Color.white;
     }
 
     public float dieAnimationTime = 1f;

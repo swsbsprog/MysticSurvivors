@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6565b0afaced29643a6a9737a8c4b968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  hp: 3
+  blinkTime: 0.03
   dieAnimationTime: 1
   dropItems:
   - {fileID: 1708048446543342445, guid: f7dca1b4614a8d84d8a931b5c6784e9f, type: 3}
+  dropRange: 0.1
 --- !u!135 &3004401704379733660
 SphereCollider:
   m_ObjectHideFlags: 0
