@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class DropItem : MonoBehaviour
 {
-    public int addScore = 1;
+    public ItemType itemType;
+    public int value = 1;
+
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<Player>();
         if (player == null)
             return;
 
-        //점수 증가.
-        StageManager.instance.AddScore(addScore);
+        player.GetItem(itemType, value);
         Destroy(gameObject);
     }
 }

@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < dropCount; i++)
         {
             dropItems.Add(
-                ItemDB.Instance.dropItems.OrderBy(x => x.ratio)
+                ItemDB.Instance.dropItems.OrderBy(x => Random.Range(0, x.ratio))
                 .Last().dropItem
                 );
         }

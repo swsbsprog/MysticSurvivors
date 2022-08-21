@@ -10,6 +10,8 @@ public class DropItemMagnet : MonoBehaviour
         if (dropItem == null)
             return;
 
-        dropItem.GetComponent<MoveToPlayer>().enabled = true;
+        var moveToPlayer = dropItem.GetComponent<MoveToPlayer>();
+        if(moveToPlayer != null)
+            moveToPlayer.enabled = true;
     }
 }
