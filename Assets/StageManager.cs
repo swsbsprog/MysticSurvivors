@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class StageManager : MonoBehaviour
     private void Awake() => instance = this;
     public int score;
     public Text scoreText;
+
     public void AddScore(int addScore)
     {
         score += addScore;

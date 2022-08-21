@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ItemDB : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static ItemDB Instance;
+    private void Awake() => Instance = this;
+    public List<DropRatio> dropItems;
+    public int dropCountMin = 0;
+    public int dropCountMax = 2;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[System.Serializable]
+public class DropRatio
+{
+    public DropItem dropItem;
+    public float ratio;
 }

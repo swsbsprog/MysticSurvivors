@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     public float dieAnimationTime = 1f;
 
     public List<DropItem> dropItems;
+    public float dropRange = 0.1f;
     private IEnumerator Die()
     {
         GetComponent<MoveToPlayer>().enabled = false;   
@@ -33,10 +35,12 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(dieAnimationTime);
         Destroy(gameObject);
 
+        float count = dropItems.Count * dropRange;
         dropItems.ForEach(x =>
         {
             var dropItem = Instantiate(x);
-            dropItem.transform.position = transform.position;
+            dropItem.transform.position = transform.position
+            + new Vector3(Random.Range(-count, count), 0, Random.Range(-count, count));
         });
     }
 }
